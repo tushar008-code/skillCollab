@@ -1,21 +1,21 @@
 /** @format */
 
+import AppLayout from '@/app/layouts/AppLayout';
+
 const appRoutes = [
 	{
-		path: '/home',
-		element: (
-			<div>
-				<h1>Home</h1>
-			</div>
-		)
-	},
-	{
-		path: '/about',
-		element: (
-			<div>
-				<h1>About</h1>
-			</div>
-		)
+		path: 'home',
+		element: <AppLayout />,
+		children: [
+			{
+				index: true,
+				element: <h3>Home</h3>
+			},
+			{
+				path: 'profile',
+				element: <h3>Profile</h3>
+			}
+		]
 	}
 ];
 
