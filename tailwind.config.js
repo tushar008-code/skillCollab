@@ -21,6 +21,10 @@ module.exports = {
 			}
 		},
 		extend: {
+			boxShadow: {
+				'input': '0 1px 15px 0px rgba(0, 0, 0, 0.8)',
+				'button': "0 8px 18px 0px rgba(27, 155, 172,0.25) , 0 0px 1px 0px rgba(20, 20, 20, 0.4)"
+			},
 			screens: {
 				mobile: { max: '767px' },
 				tab: { min: '768px', max: '991px' },
@@ -34,7 +38,8 @@ module.exports = {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					hover: 'hsl(var(--primary-hover))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
