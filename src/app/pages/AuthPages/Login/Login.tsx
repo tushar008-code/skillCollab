@@ -63,7 +63,7 @@ function Login() {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className='space-y-4'>
+					className='space-y-6'>
 					<FormField
 						control={form.control}
 						name='email'
@@ -88,7 +88,7 @@ function Login() {
 						control={form.control}
 						name='password'
 						render={({ field }) => (
-							<FormItem className='w-[418px] max-w-full  mx-auto '>
+							<FormItem className='w-[418px] max-w-full  mx-auto mb-10 '>
 								<FormLabel className='text-base text-center text-gray-400 '>
 									Password
 								</FormLabel>
@@ -100,19 +100,19 @@ function Login() {
 									/>
 								</FormControl>
 								<FormMessage />
-								<h6 className='text-end text-sm text-sky-400 font-medium cursor-pointer'>
+								<h6 className='text-end text-sm text-sky-500 font-bold cursor-pointer'>
 									Forgot Password?
 								</h6>
 							</FormItem>
 						)}
 					/>
-					<FormItem className='w-[418px] max-w-full  mx-auto '>
-						<Button type='submit'>Log in</Button>
-						<h5>
-							Don’t have an account? <span>Sign Up</span>
+					<FormItem className= '  space-y-4 w-[418px] max-w-full  mx-auto '>
+						<Button className='w-full  mb-2' type='submit'>Log in</Button>
+						<h5 className='text-base text-center text-black'>
+							Don’t have an account? <span className='text-end  text-sky-500 font-bold cursor-pointer'>Sign Up</span>
 						</h5>
-						<div>or</div>
-						<ul className='flex items-center gap-3'>
+						<div className='text-center relative after:h-0.5 after:w-40 after:absolute after:left-[20px] after:top-[50%] after:translate-y-[-50%] after:bg-slate-300  before:h-0.5 before:w-40 before:absolute before:right-[20px] before:top-[50%] before:translate-y-[-50%] before:bg-slate-300'>or</div>
+						<ul className='flex items-center gap-10 mt-10 justify-center'>
 							<li>
 								<img
 									src={googleIcon}
