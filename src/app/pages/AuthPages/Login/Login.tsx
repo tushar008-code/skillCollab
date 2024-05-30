@@ -56,7 +56,7 @@ function Login() {
 				src={logoImg}
 				alt=''
 			/>
-			<p className='text-base text-center text-gray-400 mb-[40px]'>
+			<p className='text-base text-center text-gray-400 mb-[42px]'>
 				Lorem ipsum dolor sit amet. Qui voluptates enim est quaerat voluptatem
 				qui labore internos.
 			</p>
