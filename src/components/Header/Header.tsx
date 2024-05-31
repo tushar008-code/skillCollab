@@ -1,25 +1,27 @@
 /** @format */
+import Drawer from './components/Drawer';
+import LogoBox from './components/LogoBox';
+import Navbar from './components/Navbar';
+import OptionsBox from './components/OptionsBox';
+import SearchBox from './components/SearchBox';
+function Header({ role }: { role: string }) {
+	console.log(role);
 
-import LogoBox from "./components/LogoBox";
-import Navbar from "./components/Navbar";
-import OptionsBox from "./components/OptionsBox";
-import SearchBox from "./components/SearchBox";
-
-function Header() {
-  return (
-    <header className="h-16 bg-cyan-50 flex items-center mobile:h-32 mobile:bg-white ">
-      <div className="container tab:container desktop:container">
-        <div className="flex items-center mobile:flex-col mobile:items-start">
-          <div className="flex-1">
-            <LogoBox />
-            <SearchBox />
-          </div>
-          <Navbar />
-          <OptionsBox />
-        </div>
-      </div>
-    </header>
-  );
+	return (
+		<header className='h-16 bg-cyan-50 flex items-center mobile:h-auto mobile:pt-2 mobile:bg-white '>
+			<div className='container '>
+				<div className='flex items-center mobile:flex-row mobile:flex-wrap '>
+					<div className='mobile:flex mobile:items-center flex-1 order-1 mobile:order-1 mobile:basis-1/2'>
+						<Drawer />
+						<LogoBox />
+						<SearchBox />
+					</div>
+					<Navbar />
+					<OptionsBox role={role} />
+				</div>
+			</div>
+		</header>
+	);
 }
 
 export default Header;

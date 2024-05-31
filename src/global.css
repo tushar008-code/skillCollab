@@ -97,9 +97,27 @@ body {
 	}
 }
 
-
-#app-layout{
+#app-layout {
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	min-height: 100vh;
+}
+
+.main {
+	display: grid;
+	grid-template-columns: 300px 1fr 300px;
+	padding-inline: 1rem;
+}
+
+@media (max-width: 991px) {
+	.main {
+		grid-template-columns: 200px 1fr 200px;
+		padding-inline: 1rem;
+	}
+}
+@media (max-width: 767px) {
+	.main {
+		grid-template-columns: 1fr;
+		padding-inline: 10px;
+	}
 }
