@@ -1,21 +1,23 @@
 /** @format */
 
 import AppLayout from '@/app/layouts/AppLayout';
+import PublicLayout from '@/app/layouts/PublicLayout';
+import PublicHome from '@/app/pages/PublicPages/Home';
 import { Navigate } from 'react-router-dom';
 
 const publicRoutes = [
 	{
 		path: '/public',
-		element: <Navigate to='/public/all' />
+		element: <Navigate to='/public/home' />
 	},
 	{
 		path: '/public',
-		element: <AppLayout role='guest' />,
+		element: <PublicLayout />,
 		children: [
-			{ path: 'all', element: <h3>PhublicHome</h3> },
-			{ path: 'peoples', element: <h3>peopleHome</h3> },
-			{ path: 'groups', element: <h3>GroupHome</h3> },
-			{ path: 'feedDetail/:id', element: <h3>publicFeedDetail</h3> }
+			{
+				element: <AppLayout />,
+				children: [{ path: 'home', element: <PublicHome /> }]
+			}
 		]
 	}
 ];
