@@ -1,9 +1,11 @@
 /** @format */
 
+import { useAuthUser } from "@/hooks/useAuthUser";
 import notifier from "./assets/Group.png";
 import guestImg from "./assets/guest.png";
 
 function OptionsBox({ role }: { role: string }) {
+  const { authUser } = useAuthUser();
   let userImg;
   if (role === "guest")
     userImg = (
@@ -17,7 +19,7 @@ function OptionsBox({ role }: { role: string }) {
     userImg = (
       <img
         className="h-9 w-9 object-cover mobile:h-8 mobile:w-8 rounded-full border-black border-solid border-1px "
-        src=""
+        src={authUser?.profilePhoto}
         alt=""
       />
     );
@@ -31,7 +33,7 @@ function OptionsBox({ role }: { role: string }) {
           </li>
         )}
 
-        <li className="mx-5 mobile:mx-2">{userImg}</li>
+        <li className="mx-4 mobile:mx-2">{userImg}</li>
       </ul>
     </div>
   );

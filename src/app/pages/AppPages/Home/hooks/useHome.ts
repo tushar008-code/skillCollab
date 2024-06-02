@@ -1,6 +1,6 @@
 /** @format */
 
-import publicClient from "@/app/services/publicClient";
+import userClient from "@/app/services/userClient";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
@@ -10,11 +10,7 @@ interface PublicFeedType {
   timeFilter: string;
 }
 
-export function usePublicFeeds({
-  pageSize,
-  searchKey,
-  timeFilter,
-}: PublicFeedType) {
+export function useHome({ pageSize, searchKey, timeFilter }: PublicFeedType) {
   const [searchParams] = useSearchParams();
   const currentFeed = searchParams.get("feed") || "all";
   console.log(currentFeed);
@@ -32,7 +28,7 @@ export function usePublicFeeds({
   } = useInfiniteQuery({
     queryKey: ["publicFeed", pageSize, searchKey, timeFilter, currentFeed],
     queryFn: ({ pageParam = 1 }) =>
-      publicClient.getPublicFeeds(pageParam, pageSize, currentFeed, {
+      userClient.getFeeds(pageParam, pageSize, currentFeed, {
         searchKey,
         interests: "",
         timeFilter,
