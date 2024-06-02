@@ -25,7 +25,7 @@ class PublicClient extends APIClient {
 		data = {}
 	): Promise<AxiosResponse<HomeFeedResponse>> {
 		const response = await this.client.post(
-			`/group/get-without-all-group?page=${page}&pageSize=${pageSize}`,
+			`/users/get-without-all-people-group?page=${page}&pageSize=${pageSize}`,
 			data
 		);
 		return response.data.data;

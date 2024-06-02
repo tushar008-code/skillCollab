@@ -11,7 +11,7 @@ function AppLayout() {
 	return (
 		<div id='app-layout'>
 			<Header role={role} />
-			<main className='main mt-4'>
+			<main className='main mt-6'>
 				<aside className='side1 mobile:hidden'>
 					{role === 'user' && <h6>Side 2</h6>}
 				</aside>
