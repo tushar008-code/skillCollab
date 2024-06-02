@@ -2,6 +2,7 @@
 
 import AppLayout from "@/app/layouts/AppLayout";
 import ProtectedLayout from "@/app/layouts/ProtectedLayout";
+import { Home } from "@/app/pages/AppPages";
 
 const appRoutes = [
   {
@@ -13,7 +14,7 @@ const appRoutes = [
         children: [
           {
             index: true,
-            element: <h3>Home</h3>,
+            element: <Home />,
           },
           {
             path: "profile",

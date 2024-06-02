@@ -93,8 +93,8 @@ module.exports = {
 			addComponents({
 				'.container': {
 					width: '100%',
-					paddingRight: '10px',
-					paddingLeft: '10px',
+					paddingRight: '5px',
+					paddingLeft: '5px',
 					marginRight: 'auto',
 					marginLeft: 'auto',
 					'@screen tab': {
