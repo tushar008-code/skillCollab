@@ -12,7 +12,8 @@ function Header({ role }: { role: string }) {
 			<div className='container '>
 				<div className='flex items-center mobile:flex-row mobile:flex-wrap '>
 					<div className='mobile:flex mobile:items-center flex-1 order-1 mobile:order-1 mobile:basis-1/2'>
-						<Drawer />
+						{role === 'user' && <Drawer />}
+
 						<LogoBox />
 						<SearchBox />
 					</div>
