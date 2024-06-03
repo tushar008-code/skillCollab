@@ -25,7 +25,7 @@ function FeedType() {
         {feedTypes.map((feed) => (
           <li
             key={feed.id}
-            className={`flex items-center gap-2 font-medium py-2 px-2   cursor-pointer mobile:flex-1 mobile:justify-center mobile:text-xs ${
+            className={`flex items-center gap-2 font-medium py-2 px-2   cursor-pointer mobile:flex-1 mobile:justify-center mobile:text-xs mobile:rounded-lg ${
               currentFeed === feed.id ? "bg-sky-200" : ""
             }`}
             onClick={() => handleClick(feed.id)}

@@ -26,7 +26,7 @@ function FeedHeader({ feed }: { feed: FeedType }) {
 
           <div className="text">
             <h3 className="text-sky-600 font-bold font-base mobile:text-xs">
-              {feed?.groupId?.name}
+              {feed?.groupId?.name ?? feed?.groupData?.name}
             </h3>
             <h4 className="text-xs flex font-medium items-center gap-1 text-gray-600">
               {feed?.userId?.firstName + " " + feed?.userId?.lastName}{" "}

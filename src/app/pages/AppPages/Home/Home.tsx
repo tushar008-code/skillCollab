@@ -8,15 +8,8 @@ import Feed from "@/components/Feed";
 import FeedType from "@/app/layouts/AppLayout/components/FeedType";
 import { useHomeEffects } from "./hooks/useHomeEffects";
 function Home() {
-  const pageSize = 10;
-  const searchKey = "";
-  const timeFilter = "allTime";
   const { feeds, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useHome({
-      pageSize: pageSize,
-      searchKey: searchKey,
-      timeFilter: timeFilter,
-    });
+    useHome();
 
   const { isMobile, ref } = useHomeEffects(fetchNextPage);
   if (isLoading)
@@ -29,6 +22,12 @@ function Home() {
     );
   if (isError) return <h4>There is something wrong</h4>;
 
+  if (!feeds || feeds?.pages[0]?.length === 0) {
+    return <h4 className="text-center text-xl font-semibold text-black">No feeds available</h4>;
+  }
+
+  console.log(feeds);
+  
   return (
     <div className="public_feeds">
       {isMobile && <FeedType />}

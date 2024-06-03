@@ -17,7 +17,7 @@ function AppLayout() {
         <div className="container">
           <div className="main">
             <aside className="side1 mobile:hidden">
-              {role === "user" && <h6>Side 2</h6>}
+              {role === "user" && <FeedType />}
             </aside>
             <section>
               <Outlet context={role} />
@@ -25,7 +25,9 @@ function AppLayout() {
             <aside className="side2 mobile:hidden">
               {role === "user" ? (
                 <>
-                  <FeedType />
+                  <div className="mb-4">
+                    <FeedType />
+                  </div>
                   <FeedFilter />
                 </>
               ) : (

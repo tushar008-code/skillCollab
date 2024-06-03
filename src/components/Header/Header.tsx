@@ -9,7 +9,7 @@ function Header({ role }: { role: string }) {
     <header className="h-16 bg-cyan-50 flex items-center mobile:h-auto mobile:pt-2 mobile:bg-white ">
       <div className="container ">
         <div className="flex items-center mobile:flex-row mobile:flex-wrap ">
-          <div className="mobile:flex mobile:items-center flex-1 order-1 mobile:order-1 mobile:basis-1/2">
+          <div className="flex mobile:items-center flex-1 order-1 mobile:order-1 mobile:basis-1/2 gap-5 mobile:gap-0">
             {role === "user" && <Drawer />}
 
             <LogoBox />

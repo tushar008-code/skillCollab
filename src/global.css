@@ -148,5 +148,5 @@ body {
 
 pre {
   font-family: Inter, "sans-serif";
-  white-space: pre;
+  white-space: pre-wrap;
 }

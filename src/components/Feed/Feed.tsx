@@ -14,6 +14,9 @@ export interface FeedType {
   videoUrl: string;
   gif: string;
   bgColor: string;
+  groupData: {
+    name: string;
+  };
   groupId?: null | { _id: string; groupPhoto: string; name: string };
   userId: {
     firstName: string;

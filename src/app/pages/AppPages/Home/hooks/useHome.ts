@@ -1,18 +1,16 @@
 /** @format */
 
+import useFeedFilter from "@/app/layouts/AppLayout/components/FeedFilter/useFeedFilter";
 import userClient from "@/app/services/userClient";
+import useSearch from "@/components/Header/components/SearchBox/useSearch";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
-interface PublicFeedType {
-  pageSize: number;
-  searchKey: string;
-  timeFilter: string;
-}
-
-export function useHome({ pageSize, searchKey, timeFilter }: PublicFeedType) {
+export function useHome() {
   const [searchParams] = useSearchParams();
   const currentFeed = searchParams.get("feed") || "all";
+  const { time, feed } = useFeedFilter();
+  const { searchTerm } = useSearch();
   console.log(currentFeed);
 
   const {
@@ -26,12 +24,16 @@ export function useHome({ pageSize, searchKey, timeFilter }: PublicFeedType) {
     isFetching,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["publicFeed", pageSize, searchKey, timeFilter, currentFeed],
+    queryKey:
+      searchTerm.trim() === ""
+        ? ["publicFeed", currentFeed, feed, time]
+        : ["publicFeed", searchTerm, currentFeed, feed, time],
     queryFn: ({ pageParam = 1 }) =>
-      userClient.getFeeds(pageParam, pageSize, currentFeed, {
-        searchKey,
+      userClient.getFeeds(pageParam, 10, currentFeed, {
+        searchKey: searchTerm,
         interests: "",
-        timeFilter,
+        timeFilter: time,
+        feedFilter: feed,
       }),
     initialPageParam: 0,
     getNextPageParam: (lastPage, pages) => {
