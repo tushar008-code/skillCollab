@@ -31,7 +31,7 @@ function FeedBody({ feed }: { feed: FeedType }) {
         <h5
           className={`${
             formatColor(feed?.bgColor) ? "text-white" : "text-black"
-          } text-lg font-medium mb-4 mobile:text-xs mobile:leading-6 mobile:line-clamp-3 line-clamp-4 p-2 rounded-lg`}
+          } text-lg font-medium mobile:mb-1 mb-4 mobile:text-xs mobile:leading-6 mobile:line-clamp-3 line-clamp-4 p-2 rounded-lg`}
           style={{
             backgroundColor: formatColor(feed?.bgColor) || "transparent",
           }}

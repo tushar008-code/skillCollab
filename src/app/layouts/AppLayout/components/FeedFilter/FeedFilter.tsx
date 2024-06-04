@@ -1,29 +1,8 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 import useFeedFilter from "./useFeedFilter";
-
-const feedFilters = [
-  { id: 1, label: "New", value: "New" },
-  { id: 2, label: "Top", value: "Top" },
-  { id: 3, label: "Comment Count", value: "commentCount" },
-];
-
-const timeFilters = [
-  { id: 1, label: "All", value: "allTime" },
-  { id: 2, label: "Past hour", value: "pastHour" },
-  { id: 3, label: "Today", value: "today" },
-  { id: 4, label: "Past Week", value: "pastWeek" },
-  { id: 5, label: "Past Month", value: "pastMonth" },
-  { id: 6, label: "Past Year", value: "pastYear" },
-];
+import { feedFilters, timeFilters } from "./FeedFilterData";
 
 const FeedFilter: React.FC = () => {
   const { feed, time, setFeed, setTime } = useFeedFilter();

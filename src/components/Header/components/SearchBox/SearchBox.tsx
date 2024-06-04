@@ -1,68 +1,25 @@
 import { CiSearch } from "react-icons/ci";
-import useSearch from "./useSearch";
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { IoSearchSharp } from "react-icons/io5";
 import { IoArrowBackOutline } from "react-icons/io5";
+import useInputFocus from "./useInputFocus";
+import useClickOutside from "./useClickOuside";
+import useSearchForm from "./useSearchForm";
 
 function SearchBox() {
   const {
-    setSearchTerm,
+    inputValue,
+    handleSearch,
+    handleChange,
+    handleRecentSearchClick,
     recentSearches,
-    addRecentSearch,
     removeRecentSearch,
     searchForm,
     setSearchForm,
-  } = useSearch();
-  const inputRef = useRef(null);
-  const [inputValue, setInputValue] = useState("");
+  } = useSearchForm();
 
-  function handleSearch(e: FormEvent) {
-    e.preventDefault();
-    if (inputValue.trim() !== "") {
-      setSearchTerm(inputValue);
-      addRecentSearch(inputValue);
-      setSearchForm(false);
-    }
-  }
-
-  useEffect(() => {
-    // Focus on the input field when the component mounts
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const newValue = e.target.value;
-    setInputValue(newValue);
-    if (newValue.trim() === "") {
-      setSearchTerm("");
-    }
-  }
-
-  function handleRecentSearchClick(term: string) {
-    setSearchTerm(term);
-    setInputValue(term);
-  }
-
-  function handleClickOutside(e: MouseEvent) {
-    if (
-      !inputRef.current.contains(e.target as Node) &&
-      !e.target.closest(".search-form")
-    ) {
-      setSearchForm(false);
-    }
-  }
-
-  useEffect(() => {
-    // Add event listener to handle click outside the search form
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Remove event listener on component unmount
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  const inputRef = useInputFocus();
+  useClickOutside(inputRef, () => setSearchForm(false));
 
   return (
     <div className="global-search">
@@ -96,7 +53,7 @@ function SearchBox() {
               className="back hidden mobile:block"
               onClick={() => setSearchForm(false)}
             >
-              <IoArrowBackOutline size={20} />
+              <IoArrowBackOutline size={20} cursor={"pointer"} />
             </div>
             <input
               type="text"

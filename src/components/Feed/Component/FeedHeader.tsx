@@ -4,11 +4,12 @@ import friendRequest from "../assets/People_request.png";
 import grouprequest from "../assets/groupRequest.png";
 import profileFallBack from "../assets/profilefallback.jpg";
 import groupImgFallBack from "../assets/groupImg.png";
+import { feedDateFormatter } from "@/lib/feedDateFormatter";
 
 function FeedHeader({ feed }: { feed: FeedType }) {
   if (feed?.groupId) {
     return (
-      <div className="feed-header flex items-center justify-between mb-5 mobile:items-start">
+      <div className="feed-header flex items-center justify-between mobile:mb-2 mb-5 mobile:items-start">
         <div className="left flex items-start gap-3 ">
           <div className="relative">
             {" "}
@@ -30,7 +31,9 @@ function FeedHeader({ feed }: { feed: FeedType }) {
             </h3>
             <h4 className="text-xs flex font-medium items-center gap-1 text-gray-600">
               {feed?.userId?.firstName + " " + feed?.userId?.lastName}{" "}
-              <span className="font-normal text-gray-400">Thu at 12:30 PM</span>{" "}
+              <span className="font-normal text-gray-400">
+                {feedDateFormatter(feed?.updatedAt)}
+              </span>{" "}
               <strong>
                 {" "}
                 <img src="" alt="" /> 5.3k
@@ -56,10 +59,10 @@ function FeedHeader({ feed }: { feed: FeedType }) {
   }
   if (feed?.groupId === null) {
     return (
-      <div className="feed-header flex items-center justify-between mb-5  mobile:items-start">
+      <div className="feed-header flex items-center justify-between mobile:mb-2 mb-5  mobile:items-start">
         <div className="left flex items-start gap-3">
           <img
-            className="h-10 w-10 mt-1 mobile:mt-0 border-2 border-solid object-cover border-black rounded-full"
+            className="h-10 w-10 mt-1 mobile:mt-0 object-cover rounded-full"
             src={feed?.userId?.profilePhoto ?? profileFallBack}
             alt=""
           />
@@ -70,7 +73,7 @@ function FeedHeader({ feed }: { feed: FeedType }) {
             <h4 className="text-xs flex font-medium items-center gap-1 text-gray-600">
               {feed?.userId?.expertise}
               <span className="font-normal text-gray-400">
-                Thu at 12:30 PM
+                {feedDateFormatter(feed?.updatedAt)}
               </span>{" "}
               <strong>
                 {" "}
@@ -97,7 +100,7 @@ function FeedHeader({ feed }: { feed: FeedType }) {
   }
 
   return (
-    <div className="feed-header flex items-center justify-between mb-5 mobile:items-start">
+    <div className="feed-header flex items-center justify-between mobile:mb-2 mb-5 mobile:items-start">
       <div className="left flex items-start gap-3 ">
         <div className="relative">
           {" "}
@@ -119,7 +122,10 @@ function FeedHeader({ feed }: { feed: FeedType }) {
           </h3>
           <h4 className="text-xs flex font-medium items-center gap-1 text-gray-600">
             {feed?.userId?.firstName + " " + feed?.userId?.lastName}{" "}
-            <span className="font-normal text-gray-400">Thu at 12:30 PM</span>{" "}
+            <span className="font-normal text-gray-400">
+              {" "}
+              {feedDateFormatter(feed?.updatedAt)}
+            </span>{" "}
             <strong>
               {" "}
               <img src="" alt="" /> 5.3k

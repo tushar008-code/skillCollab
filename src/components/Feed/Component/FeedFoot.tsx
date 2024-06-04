@@ -9,23 +9,23 @@ import { useAuthUser } from "@/hooks/useAuthUser";
 function FeedFoot({ feed }: { feed: FeedType }) {
   const { authUser } = useAuthUser();
   return (
-    <div className="feed-foot mt-[20px] ">
+    <div className="feed-foot mt-[20px] mobile:mt-[10px] ">
       <div className="top flex items-center w-full justify-start gap-3">
-        <div className="profile">
+        <div className="profile w-14">
           <img
             className="h-10 w-10  mobile:h-8 mobile:w-8 object-cover rounded-full"
             src={authUser?.profilePhoto ?? profileFallBack}
             alt=""
           />
         </div>
-        <div className="comment max-w-[300px] mobile:max-w-[220px] w-full">
+        <div className="comment max-w-full    w-full">
           <input
             type="text"
             placeholder="enter comment"
-            className="h-[45px] mobile:h-[35px]  w-full p-5 rounded-full mobile:text-xs mobile:px-2 py-2"
+            className="h-[45px] mobile:h-[35px]  w-full p-5 rounded-full mobile:text-xs mobile:px-4 py-2"
           />
         </div>
-        <div className="votes ml-auto ">
+        <div className="votes ml-auto w-32">
           <ul className="flex gap-2 items-center justify-end">
             <li>
               <img
@@ -44,11 +44,14 @@ function FeedFoot({ feed }: { feed: FeedType }) {
           </ul>
         </div>
       </div>
+
       <div className="bottom mt-4">
         <ul className="flex gap-2 items-center justify-between">
           <li className="flex items-center gap-1 cursor-pointer">
             <BiMessageDetail size={25} fill="gray" />
-            <span className="text-sm mobile:text-xs font-semibold">20</span>
+            <span className="text-sm mobile:text-xs font-semibold">
+              {feed?.commentCounts}
+            </span>
           </li>
           <li className="cursor-pointer">
             <FaShareAlt fill="gray" />

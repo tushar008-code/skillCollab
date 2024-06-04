@@ -26,8 +26,8 @@ export function useHome() {
   } = useInfiniteQuery({
     queryKey:
       searchTerm.trim() === ""
-        ? ["publicFeed", currentFeed, feed, time]
-        : ["publicFeed", searchTerm, currentFeed, feed, time],
+        ? ["homeFeed", currentFeed, feed, time]
+        : ["homeFeed", searchTerm, currentFeed, feed, time],
     queryFn: ({ pageParam = 1 }) =>
       userClient.getFeeds(pageParam, 10, currentFeed, {
         searchKey: searchTerm,

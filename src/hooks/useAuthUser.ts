@@ -11,7 +11,7 @@ export function useAuthUser() {
 		isLoading,
 		isError
 	} = useQuery({
-		queryKey: ['user'],
+		queryKey: ['authUser'],
 		queryFn: async () => {
 			const res = await userClient.getAuthUser(userId);
 			return res.data.data;
