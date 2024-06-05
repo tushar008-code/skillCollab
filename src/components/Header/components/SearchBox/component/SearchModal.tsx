@@ -20,7 +20,7 @@ function SearchModal() {
   useClickOutside(inputRef, () => setSearchForm(false));
 
   return (
-    <div className="search-form absolute top-3 max-h-[300px] h-full z-10 bg-white p-3 shadow-lg mobile:w-full mobile:max-h-screen mobile:h-screen">
+    <div className="search-form absolute top-3 max-h-[300px] h-full z-20 bg-white p-3 shadow-lg mobile:w-full mobile:max-h-screen mobile:h-screen">
       <form
         action=""
         className="relative mobile:flex mobile:items-center mobile:gap-3 "
