@@ -6,8 +6,13 @@ import useSearchForm from "./useSearchForm";
 import SearchModal from "./component/SearchModal";
 
 function SearchBox() {
-  const { inputValue, handleSearch, handleChange, searchForm, setSearchForm } =
-    useSearchForm();
+  const {
+    handleSearch,
+    handleChange,
+    searchForm,
+    setSearchForm,
+    searchParams,
+  } = useSearchForm();
 
   const inputRef = useInputFocus();
   useClickOutside(inputRef, () => setSearchForm(false));
@@ -20,7 +25,7 @@ function SearchBox() {
             type="text"
             className="h-[38px] rounded-lg py-2 px-3 text-xs w-[260px] border-2 border-solid border-gray-300"
             placeholder="Search..."
-            value={inputValue}
+            value={searchParams.get("searchTerm") ?? ""}
             onChange={handleChange}
             onFocus={() => setSearchForm(true)}
           />

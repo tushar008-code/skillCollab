@@ -13,7 +13,7 @@ const useSearchForm = () => {
     setSearchForm,
   } = useSearch();
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("hello");
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -58,6 +58,7 @@ const useSearchForm = () => {
     setInputValue(newValue);
     if (newValue.trim() === "") {
       searchParams.delete("searchTerm");
+      setSearchTerm(newValue);
     } else {
       searchParams.set("searchTerm", newValue);
     }
@@ -70,6 +71,9 @@ const useSearchForm = () => {
     setInputValue(term);
     searchParams.set("searchTerm", term);
     setSearchParams(searchParams);
+    if (location.pathname === "/home/profile") {
+      navigate(`/home?feed=all&searchTerm=${encodeURIComponent(term)}`);
+    }
   };
 
   return {
@@ -83,6 +87,7 @@ const useSearchForm = () => {
     removeRecentSearch,
     searchForm,
     setSearchForm,
+    searchParams,
   };
 };
 
