@@ -1,8 +1,10 @@
 /** @format */
 
 import AppLayout from "@/app/layouts/AppLayout";
+import ProfileLayout from "@/app/layouts/ProfileLayout";
 import ProtectedLayout from "@/app/layouts/ProtectedLayout";
 import { Home } from "@/app/pages/AppPages";
+import Profile from "@/app/pages/AppPages/Profile";
 
 const appRoutes = [
   {
@@ -16,9 +18,15 @@ const appRoutes = [
             index: true,
             element: <Home />,
           },
+        ],
+      },
+      {
+        path: "profile",
+        element: <ProfileLayout />,
+        children: [
           {
-            path: "profile",
-            element: <h3>Profile</h3>,
+            index: true,
+            element: <Profile />,
           },
         ],
       },

@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import useSearch from "./useSearch";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const useSearchForm = () => {
   const {
@@ -12,6 +13,8 @@ const useSearchForm = () => {
   } = useSearch();
 
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -19,6 +22,10 @@ const useSearchForm = () => {
       setSearchTerm(inputValue);
       addRecentSearch(inputValue);
       setSearchForm(false);
+    }
+
+    if (location.pathname === "/home/profile") {
+      navigate(`/home?feed=all&searchTerm=${encodeURIComponent(inputValue)}`);
     }
   };
 

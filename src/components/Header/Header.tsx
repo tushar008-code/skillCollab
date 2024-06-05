@@ -1,10 +1,12 @@
 /** @format */
+import { useUserRoles } from "@/store/useUserRole";
 import Drawer from "./components/Drawer";
 import LogoBox from "./components/LogoBox";
 import Navbar from "./components/Navbar";
 import OptionsBox from "./components/OptionsBox";
 import SearchBox from "./components/SearchBox";
-function Header({ role }: { role: string }) {
+function Header() {
+  const { role } = useUserRoles();
   return (
     <header className="h-16 bg-cyan-50 flex items-center mobile:h-auto mobile:pt-2 mobile:bg-white ">
       <div className="container ">
