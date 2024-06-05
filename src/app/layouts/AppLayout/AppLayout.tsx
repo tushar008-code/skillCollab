@@ -6,18 +6,19 @@ import { useUserRoles } from "@/store/useUserRole";
 import { Outlet } from "react-router-dom";
 import FeedType from "./components/FeedType";
 import FeedFilter from "./components/FeedFilter";
+import ProfileCard from "./components/ProfileCard";
 
 function AppLayout() {
   const { role } = useUserRoles();
 
   return (
     <div id="app-layout">
-      <Header role={role} />
+      <Header  />
       <main className=" mt-6">
         <div className="container">
           <div className="main">
             <aside className="side1 mobile:hidden">
-              {role === "user" && <FeedType />}
+              {role === "user" && <ProfileCard />}
             </aside>
             <section>
               <Outlet context={role} />

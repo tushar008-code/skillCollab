@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import useSearch from "./useSearch";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const useSearchForm = () => {
   const {
@@ -13,6 +14,8 @@ const useSearchForm = () => {
   } = useSearch();
 
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Initialize the input value from the URL
@@ -42,6 +45,10 @@ const useSearchForm = () => {
       setSearchForm(false);
       searchParams.set("searchTerm", inputValue);
       setSearchParams(searchParams);
+    }
+
+    if (location.pathname === "/home/profile") {
+      navigate(`/home?feed=all&searchTerm=${encodeURIComponent(inputValue)}`);
     }
   };
 

@@ -104,6 +104,13 @@ body {
   background-color: #f3f3f3;
 }
 
+#profile-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  background-color: #f3f3f3;
+}
+
 .main {
   display: grid;
   grid-template-columns: 1fr 650px 1fr;

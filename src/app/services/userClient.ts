@@ -5,9 +5,12 @@ import { AxiosResponse } from "axios";
 
 interface UserResponse {
   data: {
+    firstName: string;
     lastName: string;
     userName: string;
     profilePhoto: string;
+    coverPhoto: string;
+    expertise: string;
   };
 }
 
